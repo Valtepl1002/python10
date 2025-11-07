@@ -1,6 +1,5 @@
 import numpy as np
 import matplotlib
-# Якщо запускаєш на сервері/CI без дисплея, використовуємо бекстенд "Agg" для збереження файлів
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import os
@@ -9,7 +8,7 @@ import os
 x = np.linspace(1, 10, 500)
 
 # Обчислення значень функції
-y = 5 * np.sin(x) * (np.cos(x2 + 1/x))2
+y = 5 * np.sin(x) * (np.cos(x**2 + 1/x))**2
 
 # Побудова графіка
 fig, ax = plt.subplots(figsize=(8, 5))
