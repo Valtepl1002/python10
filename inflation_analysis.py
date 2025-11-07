@@ -18,7 +18,7 @@ ax.plot(x, y, linestyle='-', linewidth=2, color='blue',
 
 ax.set_xlabel('x')
 ax.set_ylabel('Y(x)')
-ax.set_title('Графік функції Y(x) = 5*sin(x) * cos^2(x^2 + 1/x)')
+ax.set_title('Графік функції Y(x) = 5*sin(x) * cos(x^2 + 1/x)^2')
 ax.legend()
 ax.grid(True)
 
