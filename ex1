@@ -1,0 +1,27 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Діапазон значень x
+x = np.linspace(1, 10, 500)
+
+# Обчислення значень функції
+y = 5 * np.sin(x) * np.cos(x2 + 1/x)2
+
+# Побудова графіка
+plt.plot(x, y, color='blue', linewidth=2, linestyle='-', label='Y(x) = 5*sin(x)*cos(x² + 1/x)²')
+
+# Додавання підписів осей
+plt.xlabel('x', fontsize=12)
+plt.ylabel('Y(x)', fontsize=12)
+
+# Назва графіка
+plt.title('Графік функції Y(x) = 5*sin(x)*cos(x² + 1/x)²', fontsize=14)
+
+# Виведення легенди
+plt.legend()
+
+# Відображення сітки
+plt.grid(True)
+
+# Показ графіка
+plt.show()
