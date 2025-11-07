@@ -1,0 +1,50 @@
+import matplotlib.pyplot as plt
+import numpy as np
+
+# --- Дані (умовні приклади, які можна оновити з World Bank DataBank) ---
+years = np.arange(2004, 2024)  # період останніх 20 років
+
+# Кількість дітей, що не відвідують школу, тис. осіб (вигадані приклади)
+ukraine = [21, 19, 17, 14, 13, 12, 10, 9, 8, 7, 6, 6, 5, 5, 4, 4, 3, 3, 2, 2]
+usa = [150, 148, 145, 143, 141, 138, 135, 132, 129, 125, 120, 115, 110, 108, 106, 105, 103, 102, 101, 100]
+
+# --- 2.1. Лінійний графік динаміки ---
+plt.figure(figsize=(8, 5))
+plt.plot(years, ukraine, marker='o', color='blue', linewidth=2, label='Україна')
+plt.plot(years, usa, marker='s', color='red', linewidth=2, label='США')
+
+plt.title('Динаміка показника "Children out of school, primary" (2004–2023)')
+plt.xlabel('Рік')
+plt.ylabel('Кількість дітей, тис. осіб')
+plt.legend()
+plt.grid(True)
+plt.tight_layout()
+plt.savefig('children_out_of_school_trend.png', dpi=300)
+plt.show()
+
+# --- 2.2. Стовпчаста діаграма (вибір країни користувачем) ---
+country = input("Введіть назву країни (Україна або США): ").strip().lower()
+
+if country == 'україна':
+    values = ukraine
+    color = 'blue'
+    title = 'Україна'
+elif country == 'сша':
+    values = usa
+    color = 'red'
+    title = 'США'
+else:
+    print("Невідома країна! Використовую Україну за замовчуванням.")
+    values = ukraine
+    color = 'blue'
+    title = 'Україна'
+
+plt.figure(figsize=(8, 5))
+plt.bar(years, values, color=color)
+plt.title(f'Кількість дітей, що не відвідують школу ({title})')
+plt.xlabel('Рік')
+plt.ylabel('Кількість дітей, тис. осіб')
+plt.grid(axis='y', linestyle='--', alpha=0.7)
+plt.tight_layout()
+plt.savefig(f'children_out_of_school_{country}.png', dpi=300)
+plt.show()
