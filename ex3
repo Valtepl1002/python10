@@ -1,0 +1,42 @@
+import numpy as np
+import matplotlib
+matplotlib.use('Agg') 
+import matplotlib.pyplot as plt
+from scipy import optimize
+import os
+
+# 1. Модельна економічна функція для оптимізації
+# Наприклад, прибуток підприємства залежить від обсягу виробництва (x)
+# Формула умовна: Profit(x) = -0.1*x^2 + 5*x - 20
+def profit(x):
+    return -(-0.1 * x**2 + 5 * x - 20)  # мінімізуємо негативний прибуток
+
+# Знаходимо точку максимуму (оптимальний обсяг виробництва)
+result = optimize.minimize(profit, x0=10)
+optimal_x = result.x[0]
+max_profit = -result.fun
+
+# 2. Дані для кругової діаграми (наприклад, структура витрат)
+labels = ['Сировина', 'Зарплата', 'Транспорт', 'Енергія', 'Податки']
+values = [35, 25, 15, 10, 15]
+
+# 3. Побудова кругової діаграми
+fig, ax = plt.subplots(figsize=(7, 7))
+wedges, texts, autotexts = ax.pie(
+    values,
+    labels=labels,
+    autopct='%1.1f%%',
+    colors=plt.cm.tab10.colors,  # різні кольори
+    startangle=90
+)
+ax.set_title('Структура витрат підприємства', fontsize=14)
+
+# 4. Виведення результатів оптимізації
+print(f"Оптимальний обсяг виробництва: {optimal_x:.2f}")
+print(f"Максимальний прибуток: {max_profit:.2f}")
+
+# 5. Збереження зображення
+out_fname = 'pie_optimization.png'
+plt.tight_layout()
+plt.savefig(out_fname, dpi=300, bbox_inches='tight')
+print(f"Кругову діаграму збережено у файл: {os.path.abspath(out_fname)}")
