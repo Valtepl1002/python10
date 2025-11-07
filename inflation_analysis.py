@@ -9,7 +9,7 @@ import os
 x = np.linspace(1, 10, 500)
 
 # Обчислення значень функції
-y = 5 * np.sin(x) * (np.cos(x2 + 1/x))2
+y = 5 * np.sin(x) * (np.cos(x**2 + 1/x))**2
 
 # Побудова графіка
 fig, ax = plt.subplots(figsize=(8, 5))
